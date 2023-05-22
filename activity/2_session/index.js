@@ -1,8 +1,11 @@
 // Ejercicio 1
+  import "./ejercicio1.js";
 
 // Ejercicio 2
+  import "./ejercicio3.js";
 
 // Ejercicio 3
+  import "./ejercicio4.js";
 
 // Ejercicio 4
 

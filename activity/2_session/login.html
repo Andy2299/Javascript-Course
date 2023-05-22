@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+</head>
+<body>
+  <button id="loginSuccess">Login Success</button>
+  <button id="loginFailure">Login Failure</button>
+
+  <script>
+    class Login {
+      constructor(username, password) {
+        this.username = username;
+        this.password = password;
+      }
+
+      login() {
+        if (this.username === 'admin' && this.password === 'passwd') {
+          alert('User logged in');
+        } else {
+          alert('User or password incorrect');
+        }
+      }
+    }
+
+    document.getElementById('loginSuccess').addEventListener('click', function() {
+      let login = new Login('admin', 'passwd');
+      login.login(); // alert -> User logged in
+    });
+
+    document.getElementById('loginFailure').addEventListener('click', function() {
+      let logbad = new Login('pepe', 'bad');
+      logbad.login(); // alert -> User or password incorrect
+    });
+  </script>
+</body>
+</html>

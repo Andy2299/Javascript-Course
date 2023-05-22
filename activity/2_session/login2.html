@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+<body>
+  <button id="loginSuccessAsync">Login Success Async</button>
+  <button id="loginFailureAsync">Login Failure Async</button>
+
+  <script>
+    class Login {
+      constructor(username, password) {
+        this.username = username;
+        this.password = password;
+      }
+
+      async loginWithUsername() {
+        return new Promise((resolve, reject) => {
+          if (this.username === 'admin' && this.password === 'passwd') {
+            resolve('User logged in');
+          } else {
+            reject('User or password incorrect');
+          }
+        });
+      }
+    }
+
+    document.getElementById('loginSuccessAsync').addEventListener('click', async function() {
+      let login = new Login('admin', 'passwd');
+      try {
+        let message = await login.loginWithUsername();
+        swal(message); // SweetAlert -> User logged in
+      } catch (error) {
+        swal("Error", error, "error");
+      }
+    });
+
+    document.getElementById('loginFailureAsync').addEventListener('click', async function() {
+      let logbad = new Login('pepe', 'bad');
+      try {
+        let message = await logbad.loginWithUsername();
+        swal(message);
+      } catch (error) {
+        swal("Error", error, "error"); // SweetAlert -> User or password incorrect
+      }
+    });
+  </script>
+</body>
+</html>
